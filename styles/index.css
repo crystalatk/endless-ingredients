@@ -1,5 +1,7 @@
-/* 123F69  Dark Blue*/
-/* E6ECEF Light Gray */
-/* 131811 Darkest Color (Almost black) */
-/*  A3CEF1 Light Blue */
-/* FA824C Orange */
+:root {
+  --dark-blue: #123f69;
+  --light-gray: #e6ecef;
+  --darkest-color: #131811;
+  --light-blue: #a3cef1;
+  --orange: #fa824c;
+}
