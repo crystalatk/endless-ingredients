@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endless Ingredients</title>
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+
+<body>
+    <section>
+        <div class="select">
+            <form>
+                <label for="ingInput" class="form-label">Datalist example</label>
+                <input id="ingInput" class="input" list="apiListDatalist" type="text" placeholder="Begin Typing your ingredient...">
+                <datalist id="apiListDatalist">
+                    
+                </datalist>
+               <button id="searchButton" target="ingInput" type="button">Search </button>
+            </form>
+        </div>
+    </section>
+    <section id="TopSection">
+        <section id="tsRecipeSection">
+            <ul id="tsRecipeList">
+
+            </ul>
+        </section>
+    </section>
+
+</body>
+<script src="scripts/ing_select.js"></script>
+
+</html>

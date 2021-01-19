@@ -18,6 +18,7 @@ function get(url, functionToDo) {
 
 const apiIngList = get('https://www.themealdb.com/api/json/v1/1/list.php?i=list', fillInIngredientOptions);
 console.log(apiIngList);
+const tsRecipeList = document.querySelector('#tsRecipeList');
 
 
 function fillInIngredientOptions(apiIngredients) {
@@ -36,6 +37,7 @@ function fillInIngredientOptions(apiIngredients) {
 function eventListener(element, input) {
     element.addEventListener('click', function(event) {
         event.preventDefault();
+        emptyRecipeList();
         const userInput = input.value;
         get(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${userInput.toLowerCase()}`, fillRecipeList)
 
@@ -55,4 +57,9 @@ function fillRecipeList(apiRecipeList) {
         li.appendChild(img);
         tsRecipeList.appendChild(li);
     })
+}
+
+function emptyRecipeList() {
+    const tsRecipeList = document.querySelector('#tsRecipeList');
+    tsRecipeList.innerHTML = '';
 }
