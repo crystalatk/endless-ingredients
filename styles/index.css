@@ -1,23 +1,23 @@
 :root {
-    --dark-blue: #123f69;
-    --light-gray: #e6ecef;
-    --darkest-color: #131811;
-    --light-blue: #a3cef1;
-    --orange: #fa824c;
+  --dark-blue: #123f69;
+  --light-gray: #e6ecef;
+  --darkest-color: #131811;
+  --light-blue: #a3cef1;
+  --orange: #fa824c;
 }
 
 html {
-    font-family: "Bangers", cursive;
-    font-size: 16px;
-    box-sizing: border-box;
+  font-family: "Bangers", cursive;
+  font-size: 16px;
+  box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 body {
-    background-color: black;
+  background-color: var(--light-blue);
 }
