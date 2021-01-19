@@ -25,13 +25,19 @@ function get(url, functionToDo) {
 
 (function () {
     const apiIngList = get('https://www.themealdb.com/api/json/v1/1/list.php?i=list', fillInIngredientOptions);
-    const drinkButton = document.querySelector('#drinkButton');
-    drinkButton.addEventListener('click', function(event) {
+    const arrowRt = document.querySelector('#arrowRt');
+    eventlistener(arrowRt);
+    const arrowLt = document.querySelector('#arrowLt');
+    eventlistener(arrowLt);
+}) ();
+
+function eventlistener (button) {
+    button.addEventListener('click', function(event) {
         event.preventDefault();
         emptyDrink();
         get('https://www.thecocktaildb.com/api/json/v1/1/random.php', fillInDrinkOptions)
     });
-}) ();
+}
 
 function emptyDrink() {
     const tsDrinkList = document.querySelector('#tsDrinkList');
@@ -176,6 +182,4 @@ function emptyBottomSection() {
     bsRightIng.innerHTML = '';
     const bsRightRecipe = document.querySelector('#bsRightRecipe');
     bsRightRecipe.innerHTML = '';
-    const bottomSection = document.querySelector('#bottomSection');
-    bottomSection.classList.remove('visible');
 }

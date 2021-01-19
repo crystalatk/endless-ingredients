@@ -110,7 +110,7 @@ li {
   margin: 20px; */
 }
 
-#bsHeader {
+.visible #bsHeader {
   background-color: var(--light-gray);
   display: flex;
   flex-grow: 1;
@@ -135,7 +135,7 @@ li {
   /* margin: 20px; */
 }
 
-.modal {
+.visible .modal {
   background-color: var(--dark-blue);
   border-radius: 8px;
   display: grid;
@@ -150,7 +150,7 @@ li {
   width: 600px; */
 }
 
-.modal .close {
+.visible .modal .close {
   background: var(--orange);
   border: none;
   border-radius: 50%;
@@ -163,14 +163,14 @@ li {
   right: 4px;
 }
 
-#bsImage {
+.visible #bsImage {
   flex-shrink: 10;
   height: 300px;
 }
 
 @media only screen and (min-width: 890px) {
   #topSection,
-  #bottomSection {
+  .visible #bottomSection {
     display: grid;
     grid-template-columns: 1fr 2fr;
   }

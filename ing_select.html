@@ -5,23 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Endless Ingredients</title>
+    <link rel="stylesheet" href="styles/josh.css">
     <link rel="stylesheet" href="styles/index.css">
 </head>
 
 <body>
     <!-- Josh's Styling Section -->
     <section id="drinkBanner">
-        <div class="select">
-            <h1>Let me get a drink</h1>
-            <button id='drinkButton' target="drinkInput" type='button'>Cocktail of the day</button>
+        <div class="DrinkBanner">
+            <div class="select">
+                <div id ="arrowRt" class="right"></div>
+                <div id="arrowLt"  class="left"></div>
+            <h1>Have a drink that compliments your meal</h1>
+                <!-- <button id='drinkButton' target="drinkInput" type='button'></button> -->
+            </div>
+            <section id="TopSection">
+            </section>
+            <section id="tsDrinkList">
+            </section>
         </div>
-        <section id="tsDrinkList">
-        </section>
     </section>
     <!-- Crystal's Styling Section -->
     <section id=topSection>
         <section id="tsIngSection">
-            <div class="select">
+            <div >
                 <h1>What ingredients do you have?</h1>
                 <form>
                     <input id="ingInput" class="input" list="apiListDatalist" type="text" placeholder="Your ingredient...">
