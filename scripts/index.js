@@ -33,9 +33,8 @@ function fillInIngredientOptions(apiIngredients) {
 };
 
 
-function eventListener(button, input) {
-
-    button.addEventListener('click', function(event) {
+function eventListener(element, input) {
+    element.addEventListener('click', function(event) {
         event.preventDefault();
         const userInput = input.value;
         get(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${userInput.toLowerCase()}`, fillRecipeList)
@@ -46,15 +45,14 @@ function eventListener(button, input) {
 
 function fillRecipeList(apiRecipeList) {
     const tsRecipeList = document.querySelector('#tsRecipeList');
+    console.log(apiRecipeList);
     apiRecipeList.meals.forEach(function(recipe) {
         const li = document.createElement('li');
-        const button = document.createElement('button');
-        button.innerHTML = recipe.strMeal;
-        button.id = recipe.idMeal;
+        li.innerHTML = recipe.strMeal;
+        li.id = recipe.idMeal;
         const img = document.createElement('img');
         img.src = recipe.strMealThumb;
-        button.appendChild(img);
-        li.appendChild(button);
+        li.appendChild(img);
         tsRecipeList.appendChild(li);
     })
 }
