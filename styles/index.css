@@ -7,9 +7,11 @@
 }
 
 html {
-  font-family: "Bangers", cursive;
+  font-family: sans-serif;
   font-size: 16px;
   box-sizing: border-box;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 *,
@@ -20,4 +22,156 @@ html {
 
 body {
   background-color: var(--light-blue);
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+  max-width: 960px;
+  overflow-x: hidden;
+}
+
+li {
+  list-style-type: none;
+}
+
+#topSection {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 20px auto;
+  width: 100%;
+}
+
+#tsIngSection {
+  background-color: var(--light-gray);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 20px;
+  padding: 10px;
+}
+
+#tsRecipeSection {
+  background-color: var(--dark-blue);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-rows: auto;
+  gap: 2rem;
+  justify-content: center;
+  grid-auto-flow: row;
+  margin: 20px;
+}
+
+#tsRecipeList {
+  align-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+  padding: 0%;
+  width: 100%;
+}
+
+.tsRecipeList--card {
+  align-items: center;
+  background-color: var(--orange);
+
+  height: 300px;
+  margin: 10px;
+  position: relative;
+  overflow: hidden;
+  top: 0;
+  width: 80%;
+}
+
+.tsRecipeList--name {
+  font-size: 2rem;
+  /* margin: auto; */
+  position: absolute;
+  left: 20px;
+  top: 10%;
+}
+
+.tsRecipeList--image {
+  object-fit: cover;
+  position: absolute;
+  /* margin: auto; */
+  opacity: 0.5;
+  /* width: 100vw; */
+}
+
+#bottomSection {
+  /* background-color: var(--dark-blue); */
+  /* display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-rows: auto;
+  gap: 2rem;
+  justify-content: center;
+  grid-auto-flow: row;
+  margin: 20px; */
+}
+
+.visible #bsHeader {
+  background-color: var(--light-gray);
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.overlay {
+  background-color: var(--dark-blue);
+  display: none;
+  /* height: 100%; */
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* overflow-y: hidden; */
+}
+
+.overlay.visible {
+  display: block;
+  /* margin: 20px; */
+}
+
+.visible .modal {
+  background-color: var(--dark-blue);
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-rows: auto;
+  gap: 2rem;
+  justify-content: center;
+  grid-auto-flow: row;
+  position: relative;
+  padding: 16px;
+  /* height: 300px;
+  width: 600px; */
+}
+
+.visible .modal .close {
+  background: var(--orange);
+  border: none;
+  border-radius: 50%;
+  color: var(--light-gray);
+  height: 24px;
+  width: 24px;
+  padding: 4px;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+
+.visible #bsImage {
+  flex-shrink: 10;
+  height: 300px;
+}
+
+@media only screen and (min-width: 890px) {
+  #topSection,
+  .visible #bottomSection {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
 }
