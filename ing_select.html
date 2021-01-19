@@ -20,24 +20,37 @@
     </section>
     <!-- Crystal's Styling Section -->
     <section id=topSection>
-        <div class="select">
-            <form>
-                <label for="ingInput" class="form-label">Datalist example</label>
-                <input id="ingInput" class="input" list="apiListDatalist" type="text" placeholder="Begin Typing your ingredient...">
-                <datalist id="apiListDatalist">
-                    
-                </datalist>
-               <button id="searchButton" target="ingInput" type="button">Search </button>
-            </form>
-        </div>
+        <section id="tsIngSection">
+            <div class="select">
+                <h1>What ingredients do you have?</h1>
+                <form>
+                    <input id="ingInput" class="input" list="apiListDatalist" type="text" placeholder="Your ingredient...">
+                    <datalist id="apiListDatalist">
+                        
+                    </datalist>
+                <button id="searchButton" target="ingInput" type="button">Search </button>
+                </form>
+            </div>
+        </section>
         <section id="tsRecipeSection">
             <ul id="tsRecipeList">
-
             </ul>
         </section>
     </section>
-
+    <section id="bottomSection" class="overlay">
+        <div class="modal">
+            <header id="bsHeader"></header>
+            <section id="bsImage">
+            </section>
+            <section id="bsRight">
+                <section id="bsRightIng">
+                </section>
+                <section id="bsRightRecipe">
+                </section>
+            </section>
+            <button id="closeModal" class="close" type="button">X</button>
+        </div>
+    </section>
 </body>
 <script src="scripts/ing_select.js"></script>
-
 </html>

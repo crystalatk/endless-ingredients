@@ -25,7 +25,6 @@ function get(url, functionToDo) {
 
 (function () {
     const apiIngList = get('https://www.themealdb.com/api/json/v1/1/list.php?i=list', fillInIngredientOptions);
-    const tsRecipeList = document.querySelector('#tsRecipeList');
     const drinkButton = document.querySelector('#drinkButton');
     drinkButton.addEventListener('click', function(event) {
         event.preventDefault();
@@ -62,19 +61,29 @@ function fillInIngredientOptions(apiIngredients) {
     });
     const ingInput = document.querySelector('#ingInput');
     const searchButton = document.querySelector("#searchButton");
-    eventListener(searchButton, ingInput);
+    eventListenerInput(searchButton, ingInput);
 };
 
 
-function eventListener(element, input) {
+function eventListenerInput(element, input) {
     element.addEventListener('click', function(event) {
         event.preventDefault();
         emptyRecipeList();
         const userInput = input.value;
         get(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${userInput.toLowerCase()}`, fillRecipeList)
-
     });
 
+}
+
+function eventListenerCard(array) {
+    array.forEach(function(item) {
+        item.addEventListener('click', function(event) {
+            event.preventDefault();
+            emptyBottomSection();
+            const recipeId = item.id;
+            get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`, fillBottomSection);
+        })
+    })
 }
 
 function fillRecipeList(apiRecipeList) {
@@ -82,16 +91,91 @@ function fillRecipeList(apiRecipeList) {
     console.log(apiRecipeList);
     apiRecipeList.meals.forEach(function(recipe) {
         const li = document.createElement('li');
-        li.innerHTML = recipe.strMeal;
-        li.id = recipe.idMeal;
         const img = document.createElement('img');
         img.src = recipe.strMealThumb;
+        img.classList.add("tsRecipeList--image");
         li.appendChild(img);
+        const div = document.createElement('div');
+        div.innerHTML = recipe.strMeal;
+        div.classList.add('tsRecipeList--name')
+        li.appendChild(div)
+        li.id = recipe.idMeal;
+        li.classList.add('tsRecipeList--card');
         tsRecipeList.appendChild(li);
     })
+    const recipeCards = document.querySelectorAll('.tsRecipeList--card');
+    eventListenerCard(recipeCards)
 }
 
 function emptyRecipeList() {
     const tsRecipeList = document.querySelector('#tsRecipeList');
     tsRecipeList.innerHTML = '';
+}
+
+function fillBottomSection(recipe) {
+    const bsHeader = document.querySelector('#bsHeader');
+    bsHeader.innerHTML = recipe.meals[0].strMeal;
+    const videoLink = document.createElement('a')
+    videoLink.href = recipe.meals[0].strYoutube;
+    videoLink.target = "_blank";
+    videoLink.innerHTML = 'Watch it!'
+    bsHeader.appendChild(videoLink);
+    const bsImage = document.querySelector('#bsImage');
+    const img = document.createElement('img');
+    img.src = recipe.meals[0].strMealThumb;
+    bsImage.appendChild(img);
+    const bsRightIng = document.querySelector('#bsRightIng');
+    const ul = document.createElement('ul');
+    bsRightIng.appendChild(ul);
+    const ingredients = [];
+    const measures = [];
+    console.log(recipe.meals[0])
+    for (let key in recipe.meals[0]) {
+        if (key.includes('strIngredient') && recipe.meals[0][key]) {
+            ingredients.push(recipe.meals[0][key]);
+        }
+        if (key.includes('strMeasure') && recipe.meals[0][key]) {
+            measures.push(`${recipe.meals[0][key]} `);
+        }
+    };
+
+    console.log(ingredients);
+    const ingList = [];
+    ingredients.forEach(function(ingredient, idx) {
+        const li = document.createElement('li');
+        li.innerHTML = measures[idx].concat(ingredient)
+        ul.appendChild(li);
+        ingList.push(measures[idx].concat(ingredient))
+    });
+    const ingList2 = {};
+    ingredients.forEach((ingredient, i) => ingList2[ingredient] = measures[i]);
+    console.log(ingList);
+    const recipePara = document.createElement('p');
+    recipePara.innerHTML = recipe.meals[0].strInstructions;
+    const bsRightRecipe = document.querySelector('#bsRightRecipe');
+    bsRightRecipe.appendChild(recipePara);
+    const bottomSection = document.querySelector('#bottomSection');
+    bottomSection.classList.add('visible');
+    eventListenerCloseModal(bottomSection);
+}
+
+function eventListenerCloseModal(section) {
+    const closeModal = document.querySelector('#closeModal');
+    closeModal.addEventListener('click', function(event) {
+        event.preventDefault();
+        section.classList.remove('visible');
+    });
+}
+
+function emptyBottomSection() {
+    const bsHeader = document.querySelector('#bsHeader');
+    bsHeader.innerHTML = '';
+    const bsImage = document.querySelector('#bsImage');
+    bsImage.innerHTML = '';
+    const bsRightIng = document.querySelector('#bsRightIng');
+    bsRightIng.innerHTML = '';
+    const bsRightRecipe = document.querySelector('#bsRightRecipe');
+    bsRightRecipe.innerHTML = '';
+    const bottomSection = document.querySelector('#bottomSection');
+    bottomSection.classList.remove('visible');
 }
