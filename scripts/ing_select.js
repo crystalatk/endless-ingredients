@@ -1,4 +1,11 @@
-'use strict'
+'use strict';
+
+// // Global Scope
+// const apiIngList = get('https://www.themealdb.com/api/json/v1/1/list.php?i=list', fillInIngredientOptions);
+
+// // Global Scope
+// const tsRecipeList = document.querySelector('#tsRecipeList');
+
 
 function get(url, functionToDo) {
     return fetch(url)
@@ -16,9 +23,34 @@ function get(url, functionToDo) {
         });
 }
 
-const apiIngList = get('https://www.themealdb.com/api/json/v1/1/list.php?i=list', fillInIngredientOptions);
-console.log(apiIngList);
-const tsRecipeList = document.querySelector('#tsRecipeList');
+(function () {
+    const apiIngList = get('https://www.themealdb.com/api/json/v1/1/list.php?i=list', fillInIngredientOptions);
+    const tsRecipeList = document.querySelector('#tsRecipeList');
+    const drinkButton = document.querySelector('#drinkButton');
+    drinkButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        emptyDrink();
+        get('https://www.thecocktaildb.com/api/json/v1/1/random.php', fillInDrinkOptions)
+    });
+}) ();
+
+function emptyDrink() {
+    const tsDrinkList = document.querySelector('#tsDrinkList');
+    tsDrinkList.innerHTML = '';
+}
+
+function fillInDrinkOptions(apiDrink) {
+    console.log(apiDrink)
+    const tsDrinkList = document.querySelector("#tsDrinkList");
+    const pCreate = document.createElement('p');
+    pCreate.innerHTML = apiDrink.drinks[0].strDrink;
+    const imgDrink = document.createElement('img');
+    imgDrink.src = apiDrink.drinks[0].strDrinkThumb;
+    pCreate.appendChild(imgDrink);
+    tsDrinkList.appendChild(pCreate);
+    const drinkButton = document.querySelector("#drinkButton");
+
+};
 
 
 function fillInIngredientOptions(apiIngredients) {
