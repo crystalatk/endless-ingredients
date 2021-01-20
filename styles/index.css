@@ -1,3 +1,7 @@
+/* font-family: 'Hachi Maru Pop', cursive;
+font-family: 'Roboto', sans-serif;
+font-family: 'Yusei Magic', sans-serif; */
+
 :root {
   --dark-blue: #123f69;
   --light-gray: #e6ecef;
@@ -24,6 +28,7 @@ body {
   background-color: var(--light-blue);
   display: flex;
   flex-wrap: wrap;
+  font-family: "Yusei Magic", sans-serif;
   margin: auto;
   max-width: 960px;
   overflow-x: hidden;
@@ -43,11 +48,10 @@ li {
 
 #tsIngSection {
   background-color: var(--light-gray);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: block;
   margin: 20px;
   padding: 10px;
+  text-align: center;
 }
 
 #tsRecipeSection {
