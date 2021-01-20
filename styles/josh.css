@@ -1,53 +1,57 @@
 .DrinkBanner {
-  padding: 60px;
-  text-align: center;
-  background: lightsalmon;
-  color: lightgreen;
-  font-size: 30px;
+    padding: 60px;
+    text-align: center;
+    background: lightsalmon;
+    color: #123f69;
+    font-size: 30px;
+    font-family: 'Indie Flower', cursive;
 }
 
 .content {
-  padding: 16px;
+    padding: 16px;
 }
 
 .sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
 }
 
-.sticky + .content {
-  padding-top: 102px;
+.sticky+.content {
+    padding-top: 102px;
 }
 
 .body {
-  font-family: Arial;
-  margin: 0;
+    font-family: 'Indie Flower', cursive;
+    font-family: consolas;
+    font-family: Arial;
+    margin: 0;
 }
 
 .right {
-  width: 100px;
-  height: 100px;
-  transition: 5s;
-  float: left;
-  box-shadow: -2px 2px 0 black;
+    width: 100px;
+    height: 100px;
+    transition: 5s;
+    float: left;
+    box-shadow: -2px 2px 0 black;
 }
 
 .left {
-  width: 100px;
-  height: 100px;
-  transition: 5s;
-  float: right;
-  box-shadow: -2px 2px 0 black;
+    width: 100px;
+    height: 100px;
+    transition: 5s;
+    float: right;
+    box-shadow: -2px 2px 0 black;
 }
 
 .right {
-  transform: rotate(45deg);
+    transform: rotate(45deg);
 }
+
 .left {
-  transform: rotate(-135deg);
+    transform: rotate(-135deg);
 }
 
 .select {
-  padding: 20px;
+    padding: 20px;
 }
