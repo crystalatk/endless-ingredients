@@ -71,7 +71,7 @@ function eventListenerCardDS(drink) {
 }
 
 function clearModal() {
-    clearHTML('dsHeader');
+    clearHTML('dsHeaderModal');
     clearHTML('dsImage');
     clearHTML('dsIng');
     clearHTML('dsRecipe');
@@ -89,7 +89,7 @@ function emptyDrinkList() {
 
 function createDrinkRecipeModal(recipe) {
     clearModal();
-    createNewElement('dsHeader', 'h1', 'innerHTML', recipe, 'strDrink');
+    createNewElement('dsHeaderModal', 'h1', 'innerHTML', recipe, 'strDrink');
     createNewElement('dsImage', 'img', 'src', recipe, 'strDrinkThumb');
     createNewElement('dsRecipe', 'p', 'innerHTML', recipe, 'strInstructions');
     createModalIng(recipe);
@@ -102,6 +102,7 @@ function createNewElement (currElement, newElement, property, recipe, key) {
     const newElementSelected = document.createElement(`${newElement}`);
     newElementSelected[property] = recipe.drinks[0][key];
     currElementSelected.appendChild(newElementSelected);
+    console.log(currElementSelected);
 }
 
 function createModalIng(recipe) {
