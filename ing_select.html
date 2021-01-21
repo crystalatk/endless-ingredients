@@ -6,25 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Endless Ingredients</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Yusei+Magic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/josh.css">
     <link rel="stylesheet" href="styles/index.css">
 </head>
 
 <body>
     <!-- Josh's Styling Section -->
-    <section id="drinkBanner">
-        <div class="DrinkBanner">
-            <div class="select">
+    <section id="drinkBanner" class="DrinkBanner">
+        <h1 id="dsHeader">Have a drink that compliments your meal</h1>
+            <!-- <button id='drinkButton' target="drinkInput" type='button'></button> -->
+        <section id="TopSection">
+        </section>
+        <section id="tsDrinkList">
+        </section>
+        <div class="select">
+            <div class="arrows">
                 <div id ="arrowRt" class="right"></div>
                 <div id="arrowLt"  class="left"></div>
-            <h1>Have a drink that compliments your meal</h1>
-                <!-- <button id='drinkButton' target="drinkInput" type='button'></button> -->
             </div>
-            <section id="TopSection">
-            </section>
-            <section id="tsDrinkList">
-            </section>
         </div>
     </section>
     <!-- Crystal's Styling Section -->
@@ -34,10 +34,12 @@
                 <h1>What ingredients do you have?</h1>
                 <form>
                     <div id="ingInputSection">
-                        <input id="ingInput" class="input" list="apiListDatalist" type="text" placeholder="Your ingredient...">
-                        <datalist id="apiListDatalist">
-                            
-                        </datalist>
+                        <div>
+                            <input id="ingInput" class="input" list="apiListDatalist" type="text" placeholder="Your ingredient...">
+                            <datalist id="apiListDatalist">
+                                
+                            </datalist>
+                        </div>
                     </div>
                     <div><a id="addAnotherIng" href="">Add Another Ingredient</a></div>
                     <div><button id="searchButton" target="ingInput" type="button">Search </button></div>
@@ -63,6 +65,10 @@
             <button id="closeModal" class="close" type="button">X</button>
         </div>
     </section>
+    <footer class="footer">
+        <h6 class="footer--header">Made with care: <a href="https://github.com/hpatrob82" target="_blank">Hilda</a>, <a href="https://github.com/jcook071990" target="_blank">Josh</a>, & <a href="https://github.com/crystalatk" target="_blank">Crystal</a></h6>
+        <p class="footer--para">Click name to view GitHub Profile</p>
+    </footer>
 </body>
 <script src="scripts/ing_select.js"></script>
 </html>

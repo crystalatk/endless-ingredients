@@ -1,57 +1,128 @@
-.DrinkBanner {
-    padding: 60px;
-    text-align: center;
-    background: lightsalmon;
-    color: #123f69;
-    font-size: 30px;
-    font-family: 'Indie Flower', cursive;
+:root {
+  --dark-blue: #123f69;
+  --light-gray: #e6ecef;
+  --darkest-color: #131811;
+  --light-blue: #a3cef1;
+  --orange: #fa976a;
 }
 
+html {
+  font-family: "Indie Flower", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: consolas;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+img {
+}
+
+/* These are not doing anything because they do not have a corresponding class in the html */
+/* 
 .content {
-    padding: 16px;
+  padding: 16px;
 }
 
 .sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
-.sticky+.content {
-    padding-top: 102px;
+.sticky + .content {
+  padding-top: 102px;
 }
 
 .body {
-    font-family: 'Indie Flower', cursive;
-    font-family: consolas;
-    font-family: Arial;
-    margin: 0;
-}
+  font-family: "Indie Flower", cursive;
+  font-family: consolas;
+  font-family: Arial;
+  margin: 0;
+} 
 
-.right {
-    width: 100px;
-    height: 100px;
-    transition: 5s;
-    float: left;
-    box-shadow: -2px 2px 0 black;
-}
+*/
 
-.left {
-    width: 100px;
-    height: 100px;
-    transition: 5s;
-    float: right;
-    box-shadow: -2px 2px 0 black;
-}
-
-.right {
-    transform: rotate(45deg);
-}
-
-.left {
-    transform: rotate(-135deg);
+.DrinkBanner {
+  background: var(--orange);
+  color: var(--dark-blue);
+  display: block;
+  font-size: 1.1rem;
+  font-family: "Indie Flower", cursive;
+  height: 150px;
+  justify-content: center;
+  padding: 0px;
+  position: relative;
+  text-align: center;
 }
 
 .select {
-    padding: 20px;
+  height: 100%;
+  justify-content: center;
+  padding: 20px;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+}
+
+.arrows {
+  margin-top: 30px;
+}
+
+.right {
+  width: 3rem;
+  height: 3rem;
+  float: left;
+  box-shadow: -2px 2px 0 var(--darkest-color);
+  transform: rotate(45deg);
+}
+
+.left {
+  width: 3rem;
+  height: 3rem;
+  float: right;
+  box-shadow: -2px 2px 0 var(--darkest-color);
+  transform: rotate(-135deg);
+}
+
+#dsHeader {
+  height: 100%;
+  justify-content: center;
+  margin: 30px 40px 20px;
+  position: relative;
+}
+
+#tsDrinkList {
+  align-content: center;
+  background-color: var(--orange);
+  display: flex;
+  font-family: "Yusei Magic", sans-serif;
+  justify-content: center;
+  padding: 20px 65px;
+  position: absolute;
+  top: 0%;
+  width: 100vw;
+}
+
+#tsDrinkList img {
+  border-radius: 20px;
+  max-height: 150px;
+  max-width: 100px;
+  width: auto;
+}
+
+#tsDrinkList p {
+  display: flex;
+  flex-wrap: wrap;
+  margin-block-start: 10px;
+  margin-block-end: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
 }
