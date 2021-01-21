@@ -153,22 +153,36 @@ function eventListenerAddIng(element, apiIngredients) {
         event.preventDefault();
         const inputBox = document.querySelectorAll('.input');
         const inputBoxLength = inputBox.length;
-        if (inputBoxLength < 3) {
-            const newDLID = `apiListDatalist${inputBoxLength +1}`;
-            const newDiv = document.createElement('div');
-            const newInput = document.createElement('input');
-            newInput.classList.add('input');
-            newInput.placeholder = 'Your ingredient...';
-            newInput.setAttribute('list', newDLID);
-            const newDatalist = document.createElement('datalist');
-            newDatalist.id = newDLID;
-            fillInIngredientOptions(apiIngredients, newDatalist);
-            const ingInputSection = document.querySelector('#ingInputSection');
-            newDiv.appendChild(newInput);
-            newDiv.appendChild(newDatalist);
-            ingInputSection.appendChild(newDiv);
-        }
+        if (inputBoxLength === 2) {
+            element.classList = 'hidden';
+            createNewIngInput(inputBoxLength, apiIngredients);
+        } else if (inputBoxLength < 3) {
+            createNewIngInput(inputBoxLength, apiIngredients)
+        } 
     })
+}
+
+function createNewIngInput(inputBoxLength, apiIngredients) {
+    const newDLID = `apiListDatalist${inputBoxLength +1}`;
+    const newDiv = document.createElement('div');
+    const newInput = document.createElement('input');
+    newInput.classList.add('input');
+    newInput.placeholder = 'Your ingredient...';
+    newInput.setAttribute('list', newDLID);
+    newInput.setAttribute('id', `ingInput${inputBoxLength+1}`);
+    const removeButton = document.createElement('button');
+    removeButton.classList.add('removeInput');
+    removeButton.setAttribute('type', 'submit');
+    removeButton.innerHTML = 'x';
+    const newDatalist = document.createElement('datalist');
+    newDatalist.id = newDLID;
+    fillInIngredientOptions(apiIngredients, newDatalist);
+    const ingInputSection = document.querySelector('#ingInputSection');
+    newDiv.appendChild(newInput);
+    newDiv.appendChild(removeButton);
+    newDiv.appendChild(newDatalist);
+    ingInputSection.appendChild(newDiv);
+    eventListenerRemoveInput(newDiv, removeButton);
 }
 
 async function eventListenerInput(element) {
@@ -179,8 +193,17 @@ async function eventListenerInput(element) {
         // getRecipeFromIds(recipeIDs)
         await getRecipeFromIds(recipeIDs)
         const recipeCards = document.querySelectorAll('.tsRecipeList--card');
-        eventListenerCard(recipeCards)
+        eventListenerCard(recipeCards);
     });
+}
+
+function eventListenerRemoveInput(element, button) {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+        element.remove();
+        const addAnotherIng = document.querySelector('#addAnotherIng');
+        addAnotherIng.classList.remove('hidden');
+    })
 }
 
 async function compareRecipes() {
