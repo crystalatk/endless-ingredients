@@ -19,7 +19,7 @@ function get(url, functionToDo) {
 }
 
 // Global Scope: Iify!
-(function() {
+(async function() {
     const apiIngList = get('https://www.themealdb.com/api/json/v1/1/list.php?i=list', topSection);
     const arrowRt = document.querySelector('#arrowRt');
     eventlistener(arrowRt);
@@ -33,7 +33,7 @@ function eventlistener(button) {
     button.addEventListener('click', function(event) {
         event.preventDefault();
         emptyDrink();
-        get('https://www.thecocktaildb.com/api/json/v1/1/random.php', fillInDrinkOptions)
+        get('https://www.thecocktaildb.com/api/json/v1/1/random.php', fillInDrinkOptions);  
     });
 }
 
@@ -49,10 +49,8 @@ function fillInDrinkOptions(apiDrink) {
     pCreate.innerHTML = apiDrink.drinks[0].strDrink;
     const imgDrink = document.createElement('img');
     imgDrink.src = apiDrink.drinks[0].strDrinkThumb;
-    pCreate.appendChild(imgDrink);
+    tsDrinkList.appendChild(imgDrink);
     tsDrinkList.appendChild(pCreate);
-    const drinkButton = document.querySelector("#drinkButton");
-
 };
 
 
@@ -83,8 +81,9 @@ function eventListenerAddIng(element, apiIngredients) {
         const inputBox = document.querySelectorAll('.input');
         const inputBoxLength = inputBox.length;
         if (inputBoxLength < 3) {
-            const newDLID = `apiListDatalist${inputBoxLength +1}`
-            const newInput = document.createElement('input')
+            const newDLID = `apiListDatalist${inputBoxLength +1}`;
+            const newDiv = document.createElement('div');
+            const newInput = document.createElement('input');
             newInput.classList.add('input');
             newInput.placeholder = 'Your ingredient...';
             newInput.setAttribute('list', newDLID);
@@ -92,8 +91,9 @@ function eventListenerAddIng(element, apiIngredients) {
             newDatalist.id = newDLID;
             fillInIngredientOptions(apiIngredients, newDatalist);
             const ingInputSection = document.querySelector('#ingInputSection');
-            ingInputSection.appendChild(newInput);
-            ingInputSection.appendChild(newDatalist);
+            newDiv.appendChild(newInput);
+            newDiv.appendChild(newDatalist);
+            ingInputSection.appendChild(newDiv);
         }
     })
 }
