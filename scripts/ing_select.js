@@ -23,8 +23,7 @@ function get(url, functionToDo) {
     const apiIngList = get('https://www.themealdb.com/api/json/v1/1/list.php?i=list', topSection);
     const arrowRt = document.querySelector('#arrowRt');
     eventlistener(arrowRt);
-    const arrowLt = document.querySelector('#arrowLt');
-    eventlistener(arrowLt);
+    eventListenerCloseModalDS();
 })();
 
 
@@ -33,7 +32,7 @@ function eventlistener(button) {
     button.addEventListener('click', function(event) {
         event.preventDefault();
         emptyDrink();
-        get('https://www.thecocktaildb.com/api/json/v1/1/random.php', fillInDrinkOptions);  
+        get('https://www.thecocktaildb.com/api/json/v1/1/random.php', fillInDrinkOptions)
     });
 }
 
@@ -43,16 +42,90 @@ function emptyDrink() {
 }
 
 function fillInDrinkOptions(apiDrink) {
-    console.log(apiDrink)
     const tsDrinkList = document.querySelector("#tsDrinkList");
     const pCreate = document.createElement('p');
     pCreate.innerHTML = apiDrink.drinks[0].strDrink;
     const imgDrink = document.createElement('img');
     imgDrink.src = apiDrink.drinks[0].strDrinkThumb;
-    tsDrinkList.appendChild(imgDrink);
+    pCreate.appendChild(imgDrink);
     tsDrinkList.appendChild(pCreate);
-};
+    eventListenerCardDS(apiDrink);
+}
 
+function eventListenerCloseModalDS() {
+    const dsCloseModalButton = document.querySelector('#dscloseModal');
+    dsCloseModalButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        const modal = document.querySelector('#dsModal');
+        modal.classList.remove('visibleds');
+    });
+}
+
+function eventListenerCardDS(drink) {
+    const tsDrinkList = document.querySelector('#tsDrinkList');
+    tsDrinkList.addEventListener('click', function(event) {
+        event.preventDefault();
+        console.log("This is here: Clicked!", drink);
+        createDrinkRecipeModal(drink);
+    });
+}
+
+function clearModal() {
+    clearHTML('dsHeader');
+    clearHTML('dsImage');
+    clearHTML('dsIng');
+    clearHTML('dsRecipe');
+}
+
+function clearHTML (id) {
+    const idSelected = document.querySelector(`#${id}`);
+    idSelected.innerHTML = '';
+}
+
+function emptyDrinkList() {
+    const dsDrinkList = document.querySelector('#tsDrinkList');
+    dsDrinkList.innerHTML = '';
+}
+
+function createDrinkRecipeModal(recipe) {
+    clearModal();
+    createNewElement('dsHeader', 'h1', 'innerHTML', recipe, 'strDrink');
+    createNewElement('dsImage', 'img', 'src', recipe, 'strDrinkThumb');
+    createNewElement('dsRecipe', 'p', 'innerHTML', recipe, 'strInstructions');
+    createModalIng(recipe);
+    const dsModal = document.querySelector('#dsModal');
+    dsModal.classList.add('visibleds');
+}
+
+function createNewElement (currElement, newElement, property, recipe, key) {
+    const currElementSelected = document.querySelector(`#${currElement}`);
+    const newElementSelected = document.createElement(`${newElement}`);
+    newElementSelected[property] = recipe.drinks[0][key];
+    currElementSelected.appendChild(newElementSelected);
+}
+
+function createModalIng(recipe) {
+    const dsIng = document.querySelector('#dsIng');
+    const ul = document.createElement('ul');
+    dsIng.appendChild(ul);
+    const ingredients = [];
+    const measures = [];
+    for (let key in recipe.drinks[0]) {
+        if (key.includes('strIngredient') && recipe.drinks[0][key]) {
+            ingredients.push(recipe.drinks[0][key]);
+        }
+        if (key.includes('strMeasure') && recipe.drinks[0][key]) {
+            measures.push(`${recipe.drinks[0][key]} `);
+        }
+    };
+    const ingList = [];
+    ingredients.forEach(function(ingredient, idx) {
+        const li = document.createElement('li');
+        li.innerHTML = measures[idx].concat(ingredient)
+        ul.appendChild(li);
+        ingList.push(measures[idx].concat(ingredient))
+    });
+}
 
 // Top Section Functions:
 
@@ -180,27 +253,6 @@ function fillRecipeList (apiRecipe) {
 
 
 // TS Recipe Side:
-// function fillRecipeList2(apiRecipeList) {
-//     const tsRecipeList = document.querySelector('#tsRecipeList');
-//     console.log(apiRecipeList);
-//     apiRecipeList.meals.forEach(function(recipe) {
-//         const li = document.createElement('li');
-//         const img = document.createElement('img');
-//         img.src = recipe.strMealThumb;
-//         img.classList.add("tsRecipeList--image");
-//         li.appendChild(img);
-//         const div = document.createElement('div');
-//         div.innerHTML = recipe.strMeal;
-//         div.classList.add('tsRecipeList--name')
-//         li.appendChild(div)
-//         li.id = recipe.idMeal;
-//         li.classList.add('tsRecipeList--card');
-//         tsRecipeList.appendChild(li);
-//     })
-//     const recipeCards = document.querySelectorAll('.tsRecipeList--card');
-//     eventListenerCard(recipeCards)
-// }
-
 function emptyRecipeList() {
     const tsRecipeList = document.querySelector('#tsRecipeList');
     tsRecipeList.innerHTML = '';

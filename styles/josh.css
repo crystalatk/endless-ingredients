@@ -21,9 +21,6 @@ html {
   box-sizing: inherit;
 }
 
-img {
-}
-
 /* These are not doing anything because they do not have a corresponding class in the html */
 /* 
 .content {
@@ -60,6 +57,7 @@ img {
   padding: 0px;
   position: relative;
   text-align: center;
+  width: 100vw;
 }
 
 .select {
@@ -67,8 +65,9 @@ img {
   justify-content: center;
   padding: 20px;
   position: absolute;
+  right: 0px;
   top: 0px;
-  width: 100%;
+  width: 10%;
 }
 
 .arrows {
@@ -78,17 +77,9 @@ img {
 .right {
   width: 3rem;
   height: 3rem;
-  float: left;
-  box-shadow: -2px 2px 0 var(--darkest-color);
-  transform: rotate(45deg);
-}
-
-.left {
-  width: 3rem;
-  height: 3rem;
   float: right;
-  box-shadow: -2px 2px 0 var(--darkest-color);
-  transform: rotate(-135deg);
+  box-shadow: 2px -2px 0 var(--darkest-color);
+  transform: rotate(45deg);
 }
 
 #dsHeader {
@@ -125,4 +116,36 @@ img {
   margin-left: 10px;
   margin-right: 10px;
   text-align: center;
+}
+
+/* Modal */
+.dsModal {
+  background-color: lightskyblue;
+  border-radius: 8px;
+  margin: auto;
+  position: relative;
+  padding: 16px;
+  height: 300px;
+  width: 600px;
+}
+
+#dsModal {
+  display: none;
+}
+
+#dsModal.visibleds {
+  display: block;
+}
+
+.dsModal .close {
+  background: silver;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  height: 24px;
+  width: 24px;
+  padding: 4px;
+  position: absolute;
+  top: 8px;
+  right: 8 px;
 }
