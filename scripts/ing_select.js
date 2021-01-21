@@ -189,8 +189,9 @@ async function eventListenerInput(element) {
     element.addEventListener('click', async function(event) {
         event.preventDefault();
         emptyRecipeList();
+        const tsRecipeNoResults = document.querySelector('#tsRecipeNoResults');
+        tsRecipeNoResults.classList.add('hidden');
         const recipeIDs = await compareRecipes();
-        // getRecipeFromIds(recipeIDs)
         await getRecipeFromIds(recipeIDs)
         const recipeCards = document.querySelectorAll('.tsRecipeList--card');
         eventListenerCard(recipeCards);
@@ -249,10 +250,14 @@ function getRecipeIds(recipes) {
 
 async function getRecipeFromIds (recipesIDList) {
     const recipeIdListLength = recipesIDList.length;
-    for (let i = 0; i < recipeIdListLength; i++) {
-        const id = recipesIDList[i];
-        await get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`, fillRecipeList);
-    };
+    if (recipeIdListLength === 0) {
+        const tsRecipeNoResults = document.querySelector('#tsRecipeNoResults');
+        tsRecipeNoResults.classList.remove('hidden');
+    } else {
+        for (let i = 0; i < recipeIdListLength; i++) {
+            const id = recipesIDList[i];
+            await get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`, fillRecipeList);
+    };}
     return;
 }
 

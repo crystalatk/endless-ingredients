@@ -99,6 +99,11 @@ li {
   padding: 5px;
 }
 
+#tsRecipeNoResults {
+  color: var(--orange);
+  text-align: center;
+}
+
 #tsRecipeSection {
   background-color: var(--dark-blue);
   display: grid;
