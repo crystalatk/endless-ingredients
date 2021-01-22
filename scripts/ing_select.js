@@ -214,6 +214,7 @@ function eventListenerRemoveInput(element, button) {
 
 async function compareRecipes() {
     const inputList = document.querySelectorAll('.input');
+    console.log(inputList);
     let allInputIds = [];
     const inputListLength = inputList.length;
     for (let i = 0; i < inputListLength; i++) {
@@ -222,6 +223,7 @@ async function compareRecipes() {
         const recipesIDList = await get(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${userInput.toLowerCase()}`, getRecipeIds);
         allInputIds.push(recipesIDList);
     };
+    console.log(allInputIds);
     allInputIds = allInputIds.flat();
     const allInputIdsLength = allInputIds.length;
     const allIDsObj = {};
@@ -299,12 +301,14 @@ function emptyRecipeList() {
 
 function eventListenerCard(array) {
     array.forEach(function(item) {
-        item.addEventListener('click', function(event) {
+        item.addEventListener('click', async function(event) {
             event.preventDefault();
             emptyBottomSection();
             const recipeId = item.id;
-            get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`, fillBottomSection);
+            await get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`, fillBottomSection);
             makeBottomSectionVisible();
+            const bottomSection = document.querySelector('#bottomSection');
+            bottomSection.scrollIntoView({behavior: "smooth"});
         })
     })
 }
