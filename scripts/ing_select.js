@@ -194,6 +194,8 @@ async function eventListenerInput(element) {
         tsRecipeNoResults.classList.add('hidden');
         const recipeIDs = await compareRecipes();
         await getRecipeFromIds(recipeIDs)
+        const tsRecipeSection = document.querySelector('#tsRecipeSection');
+        tsRecipeSection.classList.remove('hidden');
         const recipeCards = document.querySelectorAll('.tsRecipeList--card');
         eventListenerCard(recipeCards);
     });
@@ -258,7 +260,13 @@ async function getRecipeFromIds (recipesIDList) {
         for (let i = 0; i < recipeIdListLength; i++) {
             const id = recipesIDList[i];
             await get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`, fillRecipeList);
-    };}
+        };
+        get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipesIDList[0]}`, fillBottomSection)
+        const modalClass = document.querySelector('.modal');
+        modalClass.classList.add('bsRecipeFill');
+        const bottomSection = document.querySelector('#bottomSection');
+        bottomSection.classList.add('bsRecipeFill');
+    }
     return;
 }
 
@@ -294,6 +302,7 @@ function eventListenerCard(array) {
             emptyBottomSection();
             const recipeId = item.id;
             get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${recipeId}`, fillBottomSection);
+            makeBottomSectionVisible();
         })
     })
 }
@@ -338,9 +347,12 @@ function fillBottomSection(recipe) {
     recipePara.innerHTML = recipe.meals[0].strInstructions;
     const bsRightRecipe = document.querySelector('#bsRightRecipe');
     bsRightRecipe.appendChild(recipePara);
+    eventListenerCloseModal(bottomSection);
+}
+
+function makeBottomSectionVisible(){
     const bottomSection = document.querySelector('#bottomSection');
     bottomSection.classList.add('visible');
-    eventListenerCloseModal(bottomSection);
 }
 
 function eventListenerCloseModal(section) {

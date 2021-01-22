@@ -17,70 +17,72 @@
         <h1 id="dsHeader">Have a drink that compliments your meal</h1>
         <!-- <button id='drinkButton' target="drinkInput" type='button'></button> -->
         <section id="TopSection">
-        </section>
-        <section id="tsDrinkList">
-        </section>
-        <div class="select">
-            <div class="arrows">
-                <div id="arrowRt" class="right"></div>
+            <section id="tsDrinkList">
+            </section>
+            <div class="select">
+                <div class="arrows">
+                    <div id="arrowRt" class="right"></div>
+                </div>
             </div>
-        </div>
-        <div id="dsModal" class="dsModal">
-            <header id="dsHeaderModal"></header>
-            <section id="dsImage">
-            </section>
-            <section id="dsRight">
-                <section id="dsIng">
+            <div id="dsModal" class="dsModal">
+                <header id="dsHeaderModal"></header>
+                <section id="dsImage">
                 </section>
-                <section id="dsRecipe">
+                <section id="dsRight">
+                    <section id="dsIng">
+                    </section>
+                    <section id="dsRecipe">
+                    </section>
                 </section>
-            </section>
-            <button id="dscloseModal" class="close" type="button">X</button>
-        </div>
+                <button id="dscloseModal" class="close" type="button">X</button>
+            </div>
+        </section>
     </section>
     <!-- Crystal's Styling Section -->
-    <section id=topSection>
-        <section id="tsIngSection">
-            <div>
-                <h1>What ingredients do you have?</h1>
-                <form>
-                    <div id="ingInputSection">
-                        <div>
-                            <input id="ingInput" class="input" list="apiListDatalist" type="text" placeholder="Your ingredient...">
-                            <button class="removeInput invisibleButton" type="submit">x</button>
-                            <datalist id="apiListDatalist">
-                                
-                            </datalist>
+    <section id="bodyWrapper">
+        <section id=topSection>
+            <section id="tsIngSection">
+                <div>
+                    <h1>What ingredients do you have?</h1>
+                    <form>
+                        <div id="ingInputSection">
+                            <div id="inputGroup">
+                                <input id="ingInput" class="input" list="apiListDatalist" type="text" placeholder="Your ingredient...">
+                                <button class="removeInput invisibleButton" type="submit">x</button>
+                                <datalist id="apiListDatalist">
+                                    
+                                </datalist>
+                            </div>
                         </div>
-                    </div>
-                    <div><a id="addAnotherIng" href="">Add Another Ingredient</a></div>
-                    <div><button id="searchButton" target="ingInput" type="button">Search </button></div>
-                </form>
+                        <div><a id="addAnotherIng" href="">Add Another Ingredient</a></div>
+                        <div><button id="searchButton" target="ingInput" type="button">Find my recipes!</button></div>
+                    </form>
+                </div>
+            </section>
+            <section id="tsRecipeSection" class="hidden">
+                <div id="tsRecipeNoResults" class="hidden">
+                    <p>There are no recipes that match your search. Please try again.</p>
+                </div>
+                <ul id="tsRecipeList">
+                </ul>
+            </section>
+        </section>
+        <section id="bottomSection" class="overlay">
+            <div class="modal">
+                <header id="bsHeader"></header>
+                <div id="bsImgIngWrapper">
+                    <section id="bsImage">
+                    </section>
+                    <section id="bsRight">
+                        <section id="bsRightIng">
+                        </section>
+                        <section id="bsRightRecipe">
+                        </section>
+                    </section>
+                </div>
+                <button id="closeModal" class="close" type="button">X</button>
             </div>
         </section>
-        <section id="tsRecipeSection">
-            <div id="tsRecipeNoResults" class="hidden">
-                <p>There are no recipes that match your search. Please try again.</p>
-            </div>
-            <ul id="tsRecipeList">
-            </ul>
-        </section>
-    </section>
-    <section id="bottomSection" class="overlay">
-        <div class="modal">
-            <header id="bsHeader"></header>
-            <div id="bsImgIngWrapper">
-                <section id="bsImage">
-                </section>
-                <section id="bsRight">
-                    <section id="bsRightIng">
-                    </section>
-                    <section id="bsRightRecipe">
-                    </section>
-                </section>
-            </div>
-            <button id="closeModal" class="close" type="button">X</button>
-        </div>
     </section>
     <footer class="footer">
         <h6 class="footer--header">Made with care: <a href="https://github.com/hpatrob82" target="_blank">Hilda</a>, <a href="https://github.com/jcook071990" target="_blank">Josh</a>, & <a href="https://github.com/crystalatk" target="_blank">Crystal</a></h6>
