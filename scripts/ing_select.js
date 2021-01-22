@@ -197,6 +197,8 @@ async function eventListenerInput(element) {
         const tsRecipeSection = document.querySelector('#tsRecipeSection');
         tsRecipeSection.classList.remove('hidden');
         const recipeCards = document.querySelectorAll('.tsRecipeList--card');
+        const topSection = document.querySelector('#topSection');
+        topSection.classList.add('grid');
         eventListenerCard(recipeCards);
     });
 }

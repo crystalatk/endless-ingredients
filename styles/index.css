@@ -49,7 +49,6 @@ body {
 }
 
 #bodyWrapper {
-  height: 100vh;
   margin: 10px;
   max-width: 960px;
 }
@@ -210,21 +209,6 @@ li {
   width: 100%;
 }
 
-/* .tsRecipeList--card:hover img {
-  transform: scale(1.2);
-} */
-
-#bottomSection {
-  /* background-color: var(--dark-blue); */
-  /* display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-template-rows: auto;
-  gap: 2rem;
-  justify-content: center;
-  grid-auto-flow: row;
-  margin: 20px; */
-}
-
 .visible #bsHeader {
   background-color: var(--light-gray);
   color: var(--dark-blue);
@@ -250,24 +234,17 @@ li {
   color: var(--light-gray);
   display: none;
   justify-content: center;
-  /* height: 100%; */
   margin: 10px;
   position: absolute;
   top: 0;
   right: 0;
-  /* bottom: 0; */
-  /* left: 0; */
-  /* overflow: hidden; */
 }
 
 .overlay.visible {
   display: block;
-  /* margin: 20px; */
 }
 
 .visible #bsImgIngWrapper {
-  /* background-color: var(--dark-blue);
-  border-radius: 8px; */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   grid-template-rows: auto;
@@ -276,8 +253,6 @@ li {
   grid-auto-flow: row;
   position: relative;
   padding: 16px;
-  /* height: 300px;
-  width: 600px; */
 }
 
 .visible .modal .close {
@@ -344,9 +319,6 @@ footer {
   }
   footer {
   }
-  .overlay {
-    /* position: relative; */
-  }
   #enterSite {
     align-content: center;
     display: flex;
@@ -356,6 +328,9 @@ footer {
   }
   #drinkBanner {
     width: 100vw;
+  }
+  #dsHeader {
+    margin-top: 50px;
   }
   #tsDrinkList {
     padding: 10px 65px;
@@ -369,9 +344,15 @@ footer {
     top: 200px;
   }
   #topSection {
+    transition: display 0.5s ease;
+    display: flex;
+    margin-top: 40px;
+  }
+  #topSection.grid {
     align-items: center;
     display: grid;
     grid-template-columns: 1fr 2fr;
+    margin-top: 0px;
   }
   #tsIngSection {
     height: 200px;
@@ -383,6 +364,9 @@ footer {
     margin: 10px 20px;
     overflow: scroll;
     padding: 10px;
+  }
+  #tsRecipeNoResults {
+    align-self: center;
   }
   #bottomSection.bsRecipeFill,
   #bottomSection.bsRecipeFill.visible,
