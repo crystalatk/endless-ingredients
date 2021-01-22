@@ -56,7 +56,7 @@ li {
 }
 
 .DrinkBanner {
-  background: var(--orange);
+  background: var(--light-blue);
   color: var(--dark-blue);
   display: block;
   font-size: 1.1rem;
@@ -100,7 +100,7 @@ li {
 
 #tsDrinkList {
   align-content: center;
-  background-color: var(--orange);
+  background-color: var(--light-blue);
   display: flex;
   font-family: "Yusei Magic", sans-serif;
   justify-content: center;
