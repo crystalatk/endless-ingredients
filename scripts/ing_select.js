@@ -190,6 +190,7 @@ async function eventListenerInput(element) {
     element.addEventListener('click', async function(event) {
         event.preventDefault();
         emptyRecipeList();
+        emptyBottomSection();
         const tsRecipeNoResults = document.querySelector('#tsRecipeNoResults');
         tsRecipeNoResults.classList.add('hidden');
         const recipeIDs = await compareRecipes();
