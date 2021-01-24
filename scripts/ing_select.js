@@ -119,12 +119,10 @@ function createModalIng(recipe) {
             measures.push(`${recipe.drinks[0][key]} `);
         }
     };
-    const ingList = [];
     ingredients.forEach(function(ingredient, idx) {
         const li = document.createElement('li');
         li.innerHTML = measures[idx].concat(ingredient)
         ul.appendChild(li);
-        ingList.push(measures[idx].concat(ingredient))
     });
 }
 
@@ -215,7 +213,6 @@ function eventListenerRemoveInput(element, button) {
 
 async function compareRecipes() {
     const inputList = document.querySelectorAll('.input');
-    console.log(inputList);
     let allInputIds = [];
     const inputListLength = inputList.length;
     for (let i = 0; i < inputListLength; i++) {
@@ -224,7 +221,6 @@ async function compareRecipes() {
         const recipesIDList = await get(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${userInput.toLowerCase()}`, getRecipeIds);
         allInputIds.push(recipesIDList);
     };
-    console.log(allInputIds);
     allInputIds = allInputIds.flat();
     const allInputIdsLength = allInputIds.length;
     const allIDsObj = {};
