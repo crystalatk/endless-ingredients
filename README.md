@@ -30,7 +30,7 @@ A few challenges we faced were:
 - users have access to the ingredients in the api through a dropdown datalist the appears when the input fields is selected.
 - users have access to a photo of the final dish, the ingredients, the recipe, and a link to a video of the recipe being prepped.
 - users also have access to drink suggestions that populate in the top banner as compliment to their meal
-  -These drink suggestions, when clicked, present a modal with an image, ingredients, and a recipe for the drink.
+  - These drink suggestions, when clicked, present a modal with an image, ingredients, and a recipe for the drink.
 
 ## API Reference
 
